@@ -4,21 +4,28 @@
 # include <iostream>
 # include <string>
 # include <vector>
+# include <algorithm>
+# include <math.h>
 
 class Span
 {
 
 	public:
 
-		Span(int n);
+		Span(unsigned int maxSize);
 		Span( Span const & src );
 		~Span();
 
 		Span &operator=( Span const & rhs );
+		std::vector<int> const&	getData() const;
+		unsigned int	const&	getMaxSize() const;
+		void					addNumber(int n);
+		int						shortestSpan();
+		int						longestSpan();
 
 	private:
-		std::vector<int>	data;
-
+		std::vector<int>	_data;
+		unsigned int		_maxSize;
 		Span();
 };
 
