@@ -58,6 +58,14 @@ void Span::addNumber(int n)
 	this->_data.push_back(n);
 }
 
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (this->_data.size() + std::distance(begin, end) > this->_maxSize)
+		std::__throw_length_error("Span isn't large enough !");
+	for (; begin != end; ++begin)
+		addNumber(*begin);
+}
+
 int Span::shortestSpan()
 {
 	std::vector<int> cp(this->_data);
@@ -69,6 +77,8 @@ int Span::shortestSpan()
 	{
 		if (std::abs(cp.at(0) - cp.at(1)) < res)
 			res = std::abs(cp.at(0) - cp.at(1));
+		if (res == 1)
+			return (res);
 	}while (std::next_permutation(cp.begin(), cp.end()));
 
 	return res;
@@ -84,7 +94,6 @@ int Span::longestSpan()
 
 std::ostream &			operator<<( std::ostream & o, Span const & i )
 {
-	o << "Span elements : ";
 	for (std::vector<int>::const_iterator it = i.getData().begin(); it != i.getData().end(); ++it)
 		o << *it << " ";
 	return o;

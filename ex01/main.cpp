@@ -59,5 +59,34 @@ int main()
 	std::cout << "Shortest span of s3 : " << s3.shortestSpan() << std::endl;
 	std::cout << "Longest span of s3 : " << s3.longestSpan() << std::endl;
 
+	Span bigsp(10000);
+	std::vector<int> test(1000, 1);
+
+	bigsp.addNumbers(test.begin(), test.end());
+	std::cout << "Big span : " << std::endl << bigsp << std::endl;
+	test = std::vector<int>(9001, 123);
+	try
+	{
+		bigsp.addNumbers(test.begin(), test.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "Big span : " << std::endl << bigsp << std::endl;
+
+	std::cout << std::endl << "Subject tests " << std::endl;
+
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+
+
 	return 0;
 }

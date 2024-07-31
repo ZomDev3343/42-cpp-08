@@ -20,6 +20,7 @@ class Span
 		std::vector<int> const&	getData() const;
 		unsigned int	const&	getMaxSize() const;
 		void					addNumber(int n);
+		void					addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int						shortestSpan();
 		int						longestSpan();
 
