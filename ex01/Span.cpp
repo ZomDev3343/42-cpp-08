@@ -69,7 +69,7 @@ void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterat
 int Span::shortestSpan()
 {
 	std::vector<int> cp(this->_data);
-	unsigned int res = 0xffffffff;
+	int res = 0xfffffff;
 
 	if (cp.size() <= 1)
 		std::__throw_length_error("Can't get shortest span of a span with a length <= 1 !");
